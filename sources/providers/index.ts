@@ -1,9 +1,3 @@
-import {Doppler}  from './doppler';
-import {Provider} from './provider';
-
-// Support Infisicial in the future
-type SupportedProviders = 'doppler';
-
-export const providers:  Record<SupportedProviders, typeof Provider> =  {
-  doppler: Doppler,
-};
+export {factory} from './providers';
+export * as Errors from './errors';
+export * from './errors';
