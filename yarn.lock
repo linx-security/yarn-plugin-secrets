@@ -525,6 +525,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@yarinsa/yarn-plugin-secrets@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@yarinsa/yarn-plugin-secrets@workspace:."
+  dependencies:
+    "@types/node": ^20.2.4
+    "@yarnpkg/builder": ^4.0.0-rc.44
+    "@yarnpkg/cli": ^4.0.0-rc.44
+    "@yarnpkg/core": ^4.0.0-rc.44
+    "@yarnpkg/eslint-config": ^0.6.0-rc.7
+    "@yarnpkg/fslib": ^3.0.0-rc.44
+    "@yarnpkg/sdks": ^3.0.0-rc.44
+    clipanion: ^3.2.0-rc.10
+    eslint: ^8.41.0
+    nodemon: ^2.0.22
+    rimraf: 5.0.0
+    typescript: 5.1.0-beta
+  languageName: unknown
+  linkType: soft
+
 "@yarnpkg/builder@npm:^4.0.0-rc.44":
   version: 4.0.0-rc.44
   resolution: "@yarnpkg/builder@npm:4.0.0-rc.44"
@@ -4769,25 +4788,6 @@ __metadata:
   checksum: 343617202af32df2a15a3be36a5a8c0c8545208f3d3dfbc6bb7c3e3b7e8c6f8e7485432e4f3b88da3031a6e20afa7c711eded32ddfb122896ac5d914e75848d5
   languageName: node
   linkType: hard
-
-"yarn-plugin-secrets@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "yarn-plugin-secrets@workspace:."
-  dependencies:
-    "@types/node": ^20.2.4
-    "@yarnpkg/builder": ^4.0.0-rc.44
-    "@yarnpkg/cli": ^4.0.0-rc.44
-    "@yarnpkg/core": ^4.0.0-rc.44
-    "@yarnpkg/eslint-config": ^0.6.0-rc.7
-    "@yarnpkg/fslib": ^3.0.0-rc.44
-    "@yarnpkg/sdks": ^3.0.0-rc.44
-    clipanion: ^3.2.0-rc.10
-    eslint: ^8.41.0
-    nodemon: ^2.0.22
-    rimraf: 5.0.0
-    typescript: 5.1.0-beta
-  languageName: unknown
-  linkType: soft
 
 "yocto-queue@npm:^0.1.0":
   version: 0.1.0

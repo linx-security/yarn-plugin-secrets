@@ -1,5 +1,5 @@
 {
-  "name": "yarn-plugin-secrets",
+  "name": "@yarinsa/yarn-plugin-secrets",
   "private": true,
   "license": "GNU GPLv3",
   "main": "./sources/index.ts",
