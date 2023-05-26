@@ -397,6 +397,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/yaml@npm:^1.9.7":
+  version: 1.9.7
+  resolution: "@types/yaml@npm:1.9.7"
+  dependencies:
+    yaml: "*"
+  checksum: 0cdbf1857d89ade9b7d00aa09f2e0a2a56b707870b1dc1387f5be5398cd60c3f92bb32a543471147d2eaf38919f921391e0ade34fc9e1e022c7d67fb1a0da73c
+  languageName: node
+  linkType: hard
+
 "@types/yoga-layout@npm:1.9.2":
   version: 1.9.2
   resolution: "@types/yoga-layout@npm:1.9.2"
@@ -530,6 +539,7 @@ __metadata:
   resolution: "@yarinsa/yarn-plugin-secrets@workspace:."
   dependencies:
     "@types/node": ^20.2.4
+    "@types/yaml": ^1.9.7
     "@yarnpkg/builder": ^4.0.0-rc.44
     "@yarnpkg/cli": ^4.0.0-rc.44
     "@yarnpkg/core": ^4.0.0-rc.44
@@ -541,6 +551,7 @@ __metadata:
     nodemon: ^2.0.22
     rimraf: 5.0.0
     typescript: 5.1.0-beta
+    yaml: ^2.3.1
   languageName: unknown
   linkType: soft
 
@@ -4786,6 +4797,13 @@ __metadata:
   version: 4.0.0
   resolution: "yallist@npm:4.0.0"
   checksum: 343617202af32df2a15a3be36a5a8c0c8545208f3d3dfbc6bb7c3e3b7e8c6f8e7485432e4f3b88da3031a6e20afa7c711eded32ddfb122896ac5d914e75848d5
+  languageName: node
+  linkType: hard
+
+"yaml@npm:*, yaml@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "yaml@npm:2.3.1"
+  checksum: 2c7bc9a7cd4c9f40d3b0b0a98e370781b68b8b7c4515720869aced2b00d92f5da1762b4ffa947f9e795d6cd6b19f410bd4d15fdd38aca7bd96df59bd9486fb54
   languageName: node
   linkType: hard
 

@@ -1,12 +1,12 @@
 import {Hooks, MessageName, Plugin, Project, StreamReport} from '@yarnpkg/core';
 
-import {providers}                                         from './providers';
+import {factory}                                           from './providers';
+import {writeEnv}                                          from './utils/write-env';
 
 const plugin: Plugin<Hooks> = {
   hooks: {
     setupScriptEnvironment: async (project: Project, env: Record<string, string>) => {
-      const provider = process.env.SECRETS_PROVIDER || `doppler`;
-      const Provider = providers[provider];
+      const providerKey = process.env.SECRETS_PROVIDER ?? `doppler`;
 
       const report = await StreamReport.start(
         {
@@ -15,21 +15,16 @@ const plugin: Plugin<Hooks> = {
           includeLogs: true,
         },
         async (report: StreamReport) => {
-          try {
-            const secrets = await new Provider().get({project, report});
-
-            for (const [key, value] of Object.entries(secrets)) {
-              if (env[key])
-                report.reportWarningOnce(MessageName.UNNAMED, `Overriding environment variable ${key} with value from doppler`);
-
-              env[key] = value as unknown as string;
+          await report.startTimerPromise(`Fetching secrets from ${providerKey}`, async () => {
+            try {
+              const provider = await factory(providerKey);
+              const secrets = await provider.get({project, report});
+              writeEnv(env, secrets, report);
+            } catch (e: unknown) {
+              if (!(e instanceof Error)) return;
+              report.reportErrorOnce(MessageName.UNNAMED, e.message);
             }
-          } catch (e) {
-            report.reportErrorOnce(MessageName.UNNAMED, `Running ${provider} command went wrong`);
-            // new ReportError(MessageName.WORKSPACE_NOT_FOUND, `Cannot find workspace ${name} in doppler`);
-            // console.log(`Error: ${e.message}`);
-            // workspace.project.return;
-          }
+          });
         },
       );
       report.exitCode();
