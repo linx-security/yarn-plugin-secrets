@@ -10,7 +10,7 @@ Currently, the plugin defaults to using "frontend" as the prefix for matching. S
 
 ## Installation
 
-`yarn plugin import https://raw.githubusercontent.com/yarinsa/yarn-plugin-secrets/main/bundles/%40yarnpkg/plugin-secrets.js`
+`yarn plugin import https://raw.githubusercontent.com/yarinsa/yarn-plugin-secrets/v0.0.1/bundles/%40yarnpkg/plugin-secrets.js`
 
 ## Usage
 
@@ -33,9 +33,9 @@ Please note, changing this default prefix is currently not supported.
 
 We're looking forward to expanding the capabilities of this plugin. 
 
-- [] Supporting Infisical
-- [] Doppler: Infer project from doppler.yaml
-- [] Doppler: Improve error handling, such as missing token, binary, etc.
+- [ ] Supporting Infisical
+- [ ] Doppler: Infer project from doppler.yaml
+- [ ] Doppler: Improve error handling, such as missing token, binary, etc.
 
 ## Contributing
 
