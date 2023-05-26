@@ -1,8 +1,8 @@
 import {Project, Report}       from '@yarnpkg/core';
+import {DopplerProvider}       from 'doppler-provider';
+import {InfisicalProvider}     from 'infisical-provider';
 
-import {DopplerProvider}       from './doppler';
 import {ProviderNotFoundError} from './errors';
-import {InfisicalProvider}     from './infisical';
 
 
 type Provider = {

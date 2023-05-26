@@ -1,7 +1,7 @@
 import {MessageName, Report, Workspace} from '@yarnpkg/core';
 import {readFile, readdir}              from 'fs/promises';
 
-import {safeJsonParse}                  from '../../utils';
+import {safeJsonParse}                  from 'utils';
 
 
 type Config = {

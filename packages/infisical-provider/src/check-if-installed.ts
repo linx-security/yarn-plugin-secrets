@@ -1,6 +1,6 @@
 import {Report}    from '@yarnpkg/core';
 
-import {asyncExec} from '../../utils';
+import {asyncExec} from 'utils';
 
 export const CLI_BIN = `infisical` as const;
 

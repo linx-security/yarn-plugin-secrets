@@ -1,0 +1,12 @@
+{
+  "name": "infisical-provider",
+  "packageManager": "yarn@3.5.1",
+  "types": "src/index.ts",
+  "main": "src/index.ts",
+  "dependencies": {
+    "utils": "workspace:^"
+  },
+  "devDependencies": {
+    "@types/yaml": "^1.9.7"
+  }
+}

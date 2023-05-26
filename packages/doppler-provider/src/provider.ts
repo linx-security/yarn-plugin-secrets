@@ -1,7 +1,6 @@
 import {MessageName, Project, Report}               from '@yarnpkg/core';
 import {PortablePath}                               from '@yarnpkg/fslib';
-
-import {InvalidJsonError, asyncExec, safeJsonParse} from '../../utils';
+import {InvalidJsonError, asyncExec, safeJsonParse} from 'utils';
 
 import {CLI_BIN, checkIfInstalled}                  from './check-if-installed';
 import {getConfig}                                  from './get-config';

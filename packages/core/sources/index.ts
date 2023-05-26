@@ -1,7 +1,7 @@
 import {Hooks, MessageName, Plugin, Project, StreamReport} from '@yarnpkg/core';
+import {writeEnv}                                          from 'utils';
 
 import {factory}                                           from './providers';
-import {writeEnv}                                          from './utils/write-env';
 
 const plugin: Plugin<Hooks> = {
   hooks: {
