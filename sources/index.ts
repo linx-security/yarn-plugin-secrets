@@ -6,7 +6,7 @@ import {writeEnv}                                          from './utils/write-e
 const plugin: Plugin<Hooks> = {
   hooks: {
     setupScriptEnvironment: async (project: Project, env: Record<string, string>) => {
-      const providerKey = process.env.SECRETS_PROVIDER ?? `doppler`;
+      const providerKey = process.env.SECRETS_PROVIDER ?? `infisical`;
 
       const report = await StreamReport.start(
         {
