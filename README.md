@@ -10,11 +10,11 @@ Currently, the plugin defaults to using "frontend" as the prefix for matching. S
 
 ## Installation
 
-To be completed with your specific installation instructions...
+`yarn plugin import https://raw.githubusercontent.com/yarinsa/yarn-plugin-secrets/main/bundles/%40yarnpkg/plugin-secrets.js`
 
 ## Usage
 
-To be completed with your specific usage instructions...
+Plug n Play, just install :)
 
 ## Matching Logic
 
@@ -31,14 +31,18 @@ Please note, changing this default prefix is currently not supported.
 
 ## Future Enhancements
 
-We're looking forward to expanding the capabilities of this plugin. Future enhancements may include support for custom prefixes and Infisicial, subject to demand.
+We're looking forward to expanding the capabilities of this plugin. 
+
+- [] Supporting Infisical
+- [] Doppler: Infer project from doppler.yaml
+- [] Doppler: Improve error handling, such as missing token, binary, etc.
 
 ## Contributing
 
-We welcome contributions! Please see the CONTRIBUTING.md file for more details.
+We welcome contributions!
 
 ## License
 
-To be completed with your specific license information...
+GNU GPLv3
 
-Please note that this is a draft and should be customized according to your specific plugin's features and requirements. Be sure to add installation instructions, usage examples, and any other information you think your users might need.
+Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.
