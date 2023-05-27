@@ -1,6 +1,7 @@
 import {Project, Report}       from '@yarnpkg/core';
+import {DopplerProvider}       from 'doppler-provider';
+import {InfisicalProvider}     from 'infisical-provider';
 
-import {DopplerProvider}       from './doppler';
 import {ProviderNotFoundError} from './errors';
 
 
@@ -10,11 +11,7 @@ type Provider = {
 
 const registry: {[key: string]: Provider} = {
   [DopplerProvider.key]: DopplerProvider,
-};
-
-
-export const register = (name: string, provider: Provider) => {
-  registry[name] = provider;
+  [InfisicalProvider.key]: InfisicalProvider,
 };
 
 export const factory = async (name: string): Promise<Provider> => {

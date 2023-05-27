@@ -1,39 +1,43 @@
 import {MessageName, Project, Report}               from '@yarnpkg/core';
 import {PortablePath}                               from '@yarnpkg/fslib';
 
-import {InvalidJsonError, asyncExec, safeJsonParse} from '../../utils';
+import {InvalidJsonError, asyncExec, safeJsonParse} from 'utils';
 
 import {CLI_BIN, checkIfInstalled}                  from './check-if-installed';
 import {getConfig}                                  from './get-config';
+import {parseSecrets}                               from './parse-secrets';
 
 
-const PROVIDER_KEY = `doppler` as const;
-const TIMEOUT_DURATION = 10; // seconds
+const PROVIDER_KEY = `infisical` as const;
 
 export const  get = async ({project, report}: {project: Project, report: Report}): Promise<Record<string, string>>  => {
-  const progress = Report.progressViaCounter(4);
+  const progress = Report.progressViaCounter(5);
   const loader = report.reportProgress(progress);
 
   try {
     // Step 1: Check pre-requisites
-    await checkIfInstalled(report);
     progress.set(1);
+    await checkIfInstalled(report);
 
     // Step 2: Get config
-    const workspace = (project.getWorkspaceByCwd(process.cwd() as PortablePath));
-    const {setup: {project: name}} = await getConfig(workspace, report);
     progress.set(2);
-    report.reportInfoOnce(MessageName.UNNAMED, `Project name: ${name}`);
+    const workspace = (project.getWorkspaceByCwd(process.cwd() as PortablePath));
+    const config = await getConfig(workspace, report);
+    config && report.reportInfoOnce(MessageName.UNNAMED, `Project id: ${config.workspaceId}`);
 
     // Step 3: Get secrets
-    const secrets =  await asyncExec(`${CLI_BIN} secrets download`, [`--no-file`, `--format=json`, `-p ${name}`, `--timeout ${TIMEOUT_DURATION}s`], false);
     progress.set(3);
+    const secrets =  await asyncExec(`${CLI_BIN} export `, [`--format=json`], false);
     report.reportInfoOnce(MessageName.UNNAMED, `Fetched successfully`, {reportExtra: () => secrets});
 
     // Step 4: Parse secrets
-    const secretsJson = safeJsonParse(secrets);
     progress.set(4);
-    return secretsJson;
+    const response = safeJsonParse(secrets);
+
+    // Step 5: Map response to secrets object
+    progress.set(5);
+    const mappedSecrets = parseSecrets({secrets: response, report});
+    return mappedSecrets;
   } catch (e) {
     if (e instanceof InvalidJsonError) {
       report.reportErrorOnce(MessageName.UNNAMED, `Invalid json returned from doppler`);
@@ -47,7 +51,7 @@ export const  get = async ({project, report}: {project: Project, report: Report}
   }
 };
 
-export const DopplerProvider = {
+export const InfisicalProvider = {
   get,
   key: PROVIDER_KEY,
 };

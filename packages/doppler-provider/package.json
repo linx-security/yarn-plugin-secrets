@@ -1,0 +1,16 @@
+{
+  "name": "doppler-provider",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "packageManager": "yarn@3.5.1",
+  "dependencies": {
+    "@yarnpkg/core": "workspace:*",
+    "@yarnpkg/fslib": "workspace:*",
+    "yaml": "^2.3.1"
+  },
+  "devDependencies": {
+    "@types/yaml": "^1.9.7",
+    "@yarnpkg/eslint-config": "workspace:*",
+    "eslint": "workspace:*"
+  }
+}

@@ -4,7 +4,7 @@ export class InvalidJsonError extends Error {
   }
 }
 
-export const safeJsonParse = (json: string) => {
+export const safeJsonParse = (json: string): any => {
   try {
     return JSON.parse(json);
   } catch (e) {

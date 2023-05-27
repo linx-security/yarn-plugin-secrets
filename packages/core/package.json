@@ -1,36 +1,28 @@
 {
-  "name": "secrets",
+  "name": "yarn-plugin-secrets",
   "private": true,
   "license": "GNU GPLv3",
   "main": "./sources/index.ts",
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
-  "resolutions": {
+  "dependencies": {
     "@yarnpkg/cli": "^4.0.0-rc.44",
     "@yarnpkg/core": "^4.0.0-rc.44",
     "@yarnpkg/fslib": "^3.0.0-rc.44",
     "clipanion": "^3.2.0-rc.10",
-    "@yarnpkg/builder": "^4.0.0-rc.44",
-    "eslint": "^8.41.0",
-    "@yarnpkg/eslint-config": "^0.6.0-rc.7",
-    "typescript": "5.1.0-beta"
-  },
-  "dependencies": {
-    "@yarnpkg/cli": "workspace:*",
-    "@yarnpkg/core": "workspace:*",
-    "@yarnpkg/fslib": "workspace:*",
-    "clipanion": "workspace:*"
+    "doppler-provider": "workspace:*",
+    "infisical-provider": "workspace:*",
+    "utils": "workspace:*",
+    "yaml": "^2.3.1"
   },
   "devDependencies": {
     "@types/node": "^20.2.4",
-    "@yarnpkg/eslint-config": "workspace:*",
+    "@types/yaml": "^1.9.7",
+    "@yarnpkg/builder": "^4.0.0-rc.44",
+    "@yarnpkg/eslint-config": "^0.6.0-rc.7",
     "@yarnpkg/sdks": "^3.0.0-rc.44",
-    "eslint": "workspace:*",
-    "hygen": "^6.2.11",
-    "typescript": "workspace:*"
+    "eslint": "^8.41.0",
+    "nodemon": "^2.0.22",
+    "rimraf": "5.0.0",
+    "typescript": "5.1.0-beta"
   },
   "scripts": {
     "lint": "eslint sources --ext .ts",
