@@ -6,6 +6,7 @@ import {parse}                          from 'yaml';
 type Config = {
   setup: {
     project: string;
+    config?: string;
   };
   isInferred: boolean;
 };

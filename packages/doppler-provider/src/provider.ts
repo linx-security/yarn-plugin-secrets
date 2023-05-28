@@ -21,7 +21,7 @@ export const  get = async ({project, report}: {project: Project, report: Report}
 
     // Step 2: Get config
     const workspace = (project.getWorkspaceByCwd(process.cwd() as PortablePath));
-    const {setup: {project: name}, isInferred} = await getConfig(workspace, report);
+    const {setup: {project: name, config}, isInferred} = await getConfig(workspace, report);
     if (isInferred) {
       const exists = await checkIfProjectExist(name);
 
@@ -34,7 +34,7 @@ export const  get = async ({project, report}: {project: Project, report: Report}
     report.reportInfoOnce(MessageName.UNNAMED, `Project name: ${name}`);
 
     // Step 3: Get secrets
-    const secrets =  await asyncExec(`${CLI_BIN} secrets download`, [`--no-file`, `--format=json`, `-p ${name}`, `--timeout ${TIMEOUT_DURATION}s`], false);
+    const secrets =  await asyncExec(`${CLI_BIN} secrets download`, [`--no-file`, `--format=json`, `-p ${name}`, config ? `-c ${config}` : ``, `--timeout ${TIMEOUT_DURATION}s`], false);
     progress.set(3);
     report.reportInfoOnce(MessageName.UNNAMED, `Fetched successfully`, {reportExtra: () => secrets});
 
