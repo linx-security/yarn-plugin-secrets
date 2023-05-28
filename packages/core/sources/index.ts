@@ -19,7 +19,9 @@ const plugin: Plugin<Hooks> = {
             try {
               const provider = await factory(providerKey);
               const secrets = await provider.get({project, report});
-              writeEnv(env, secrets, report);
+              if (secrets) {
+                writeEnv(env, secrets, report);
+              }
             } catch (e: unknown) {
               if (!(e instanceof Error)) return;
               report.reportErrorOnce(MessageName.UNNAMED, e.message);

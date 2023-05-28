@@ -40,11 +40,11 @@ export const  get = async ({project, report}: {project: Project, report: Report}
     return mappedSecrets;
   } catch (e) {
     if (e instanceof InvalidJsonError) {
-      report.reportErrorOnce(MessageName.UNNAMED, `Invalid json returned from infisical`);
+      report.reportWarningOnce(MessageName.UNNAMED, `Invalid json returned from infisical`);
       return null;
     }
 
-    report.reportErrorOnce(MessageName.UNNAMED, e.message);
+    report.reportWarningOnce(MessageName.UNNAMED, e.message);
     return null;
   } finally {
     loader.stop();

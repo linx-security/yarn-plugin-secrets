@@ -2,7 +2,7 @@ import {MessageName, Report} from '@yarnpkg/core';
 
 export const parseSecrets = ({secrets, report}: {secrets: unknown, report: Report}) => {
   if (!(Array.isArray(secrets))) {
-    report.reportErrorOnce(MessageName.UNNAMED, `Invalid json returned from infisical`);
+    report.reportWarningOnce(MessageName.UNNAMED, `Invalid json returned from infisical`);
     return null;
   }
 

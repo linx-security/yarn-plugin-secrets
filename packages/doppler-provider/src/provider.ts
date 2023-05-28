@@ -3,6 +3,7 @@ import {PortablePath}                               from '@yarnpkg/fslib';
 import {InvalidJsonError, asyncExec, safeJsonParse} from 'utils';
 
 import {CLI_BIN, checkIfInstalled}                  from './check-if-installed';
+import {checkIfProjectExist}                        from './check-if-project-exists';
 import {getConfig}                                  from './get-config';
 
 
@@ -20,7 +21,15 @@ export const  get = async ({project, report}: {project: Project, report: Report}
 
     // Step 2: Get config
     const workspace = (project.getWorkspaceByCwd(process.cwd() as PortablePath));
-    const {setup: {project: name}} = await getConfig(workspace, report);
+    const {setup: {project: name}, isInferred} = await getConfig(workspace, report);
+    if (isInferred) {
+      const exists = await checkIfProjectExist(name);
+
+      if (!exists) {
+        report.reportInfoOnce(MessageName.UNNAMED, `Project ${name} does not exist`);
+        return null;
+      }
+    }
     progress.set(2);
     report.reportInfoOnce(MessageName.UNNAMED, `Project name: ${name}`);
 
@@ -35,11 +44,11 @@ export const  get = async ({project, report}: {project: Project, report: Report}
     return secretsJson;
   } catch (e) {
     if (e instanceof InvalidJsonError) {
-      report.reportErrorOnce(MessageName.UNNAMED, `Invalid json returned from doppler`);
+      report.reportWarningOnce(MessageName.UNNAMED, `Invalid json returned from doppler`);
       return null;
     }
 
-    report.reportErrorOnce(MessageName.UNNAMED, e.message);
+    report.reportWarningOnce(MessageName.UNNAMED, e.message);
     return null;
   } finally {
     loader.stop();

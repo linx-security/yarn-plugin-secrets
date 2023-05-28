@@ -7,6 +7,7 @@ type Config = {
   setup: {
     project: string;
   };
+  isInferred: boolean;
 };
 
 const CONFIGURATION_FILES = [`doppler.yaml`, `doppler.yml`] as const;
@@ -19,7 +20,7 @@ export const getConfig = async ({cwd: workspacePath, manifest}: Workspace, repor
 
   if (!configs?.length)  {
     report.reportWarningOnce(MessageName.UNNAMED, `No doppler configuration file found, falling back to workspace name ${name}`);
-    return {setup: {project: name}};
+    return {setup: {project: name}, isInferred: true};
   }
 
   if (configs.length > 1)
