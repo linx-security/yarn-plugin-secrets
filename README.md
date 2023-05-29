@@ -19,9 +19,9 @@ Plug n Play, just install :)
 ## Future Enhancements
 
 
-- [] Doppler: Infer project from doppler.yaml
-- [] Infra: Generic progress at top level
-- [] Providers: Improve error handling, such as missing token, binary, etc.
+- [ ] Doppler: Infer project from doppler.yaml
+- [ ] Infra: Generic progress at top level
+- [ ] Providers: Improve error handling, such as missing token, binary, etc.
 
 (You are welcome to suggest new features)
 
