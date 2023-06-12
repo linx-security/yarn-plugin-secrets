@@ -21,7 +21,12 @@ export const  get = async ({project, report}: {project: Project, report: Report}
 
     // Step 2: Get config
     const workspace = (project.getWorkspaceByCwd(process.cwd() as PortablePath));
-    const {setup: {project: name, config}, isInferred} = await getConfig(workspace, report);
+    const {setup, isInferred} = await getConfig(workspace, report);
+    if (!setup) {
+      report.reportInfoOnce(MessageName.UNNAMED, `No doppler setup found or setup set to false. Skipping...`);
+      return null;
+    }
+    const {project: name, config} = setup;
     if (isInferred) {
       const exists = await checkIfProjectExist(name);
 

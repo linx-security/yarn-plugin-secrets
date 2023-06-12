@@ -7,7 +7,7 @@ type Config = {
   setup: {
     project: string;
     config?: string;
-  };
+  } | false;
   isInferred: boolean;
 };
 
