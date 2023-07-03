@@ -6,7 +6,7 @@
   "dependencies": {
     "@yarnpkg/core": "workspace:*",
     "@yarnpkg/fslib": "workspace:*",
-    "yaml": "^2.3.1"
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@types/yaml": "^1.9.7",
