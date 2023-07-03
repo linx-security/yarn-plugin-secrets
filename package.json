@@ -39,5 +39,6 @@
     "build:dev": "builder build plugin --no-minify",
     "build:watch": "nodemon -w sources/* -w sources/**/* --exec yarn build:dev",
     "clean": "rimraf bundles"
-  }
+  },
+  "packageManager": "yarn@3.6.0"
 }
